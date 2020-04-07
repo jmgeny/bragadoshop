@@ -41,6 +41,8 @@
           </div>
             <!-- /.card-body -->
           <div class="card-footer shadow">
+              <a class="btn btn-danger" href="{{ route('cancelar','tienda') }}">Cancelar</a>
+
               <input :disabled= "deshabilitar_boton==1" type="submit" value="Guardar" class="btn btn-primary float-right">
           </div>
           <!-- /.card-footer-->

@@ -42,7 +42,9 @@ class AdminCategoryController extends Controller
         $cat = Category::create($request->all());
 
         $categories = Category::orderBy('name')->paginate(2);
-        return view('admin.category.index', compact('categories'));
+
+        // return view('admin.category.index', compact('categories'));
+        return redirect()->route('admin.category.index')->with('datos','Se creó la categoría nueva');
     }
 
     /**
@@ -83,7 +85,7 @@ class AdminCategoryController extends Controller
 
          $cat->fill($request->all())->save();
 
-        return $cat;
+        return redirect()->route('admin.category.index')->with('datos','Se modificó la categoría');
     }
 
     /**

@@ -17,7 +17,7 @@ use App\Product;
 Route::get('/', function () {
 
 		return view('tienda.index');
-});
+})->name('tienda');
 
 
 Auth::routes();
@@ -31,3 +31,9 @@ Route::get('/admin', function () {
 });
 
 Route::resource('/admin/category','Admin\AdminCategoryController')->names('admin.category');
+
+Route::get('cancelar/{ruta}', function($ruta){
+
+	return redirect()->route( $ruta )->with('cancelar','Se canceló la Acción');
+
+})->name('cancelar');
