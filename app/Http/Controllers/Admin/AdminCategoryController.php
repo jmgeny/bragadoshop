@@ -15,7 +15,9 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('name')->paginate(2);
+
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -38,7 +40,9 @@ class AdminCategoryController extends Controller
     {
         
         $cat = Category::create($request->all());
-        return view('admin.category.create');
+
+        $categories = Category::orderBy('name')->paginate(2);
+        return view('admin.category.index', compact('categories'));
     }
 
     /**

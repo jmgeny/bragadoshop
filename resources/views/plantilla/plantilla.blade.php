@@ -21,7 +21,7 @@
 <body>
 
 <div id="app">
-	<!-- Menu -->
+	<!-- Hombreu -->
 
 	<div class="menu">
 
@@ -35,9 +35,9 @@
 		<!-- Navigation -->
 		<div class="menu_nav">
 			<ul>
-				<li><a href="#">Women</a></li>
-				<li><a href="#">Men</a></li>
-				<li><a href="#">Kids</a></li>
+				<li><a href="#">Mujer</a></li>
+				<li><a href="#">Hombre</a></li>
+				<li><a href="#">Niños</a></li>
 
 			</ul>
 		</div>
@@ -69,23 +69,23 @@
 					<a href="#">
 						<div class="d-flex flex-row align-items-center justify-content-start">
 							<div><img src="{{ asset('asset/images/logo_1.png') }}" alt=""></div>
-							<div>Jhonatan Shop</div>
+							<div>Bragado Shop</div>
 						</div>
 					</a>	
 				</div>
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 				<nav class="main_nav">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li class="active"><a href="#">Women</a></li>
-						<li><a href="#">Men</a></li>
-						<li><a href="#">Kids</a></li>					
+						<li class="active"><a href="#">Mujer</a></li>
+						<li><a href="#">Hombre</a></li>
+						<li><a href="#">Niños</a></li>					
 					</ul>
 				</nav>
 				<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
 					<!-- Search -->
 					<div class="header_search">
 						<form action="#" id="header_search_form">
-							<input type="text" class="search_input" placeholder="Search Item" required="required">
+							<input type="text" class="search_input" placeholder="Buscar Item" required="required">
 							<button class="header_search_button"><img src="{{ asset('asset/images/search.png') }}" alt=""></button>
 						</form>
 					</div>
@@ -117,7 +117,7 @@
 									<a href="#">
 										<div class="d-flex flex-row align-items-center justify-content-start">
 											<div class="footer_logo_icon"><img src="{{ asset('asset/images/logo_2.png') }}" alt=""></div>
-											<div>Jhonatan Shop</div>
+											<div>Bragado Shop</div>
 										</div>
 									</a>		
 								</div>
@@ -145,7 +145,7 @@
 										<a href="#"><div>Terms and Conditions</div></a>
 									</li>
 									<li>
-										<a href="#"><div>Contact</div></a>
+										<a href="#"><div>Contacto</div></a>
 									</li>
 								</ul>
 							</div>
@@ -186,11 +186,11 @@
 								</div>
 									<nav class="footer_nav ml-md-auto order-md-2 order-1">
 										<ul class="d-flex flex-row align-items-center justify-content-start">
-											<li><a href="category.html">Women</a></li>
-											<li><a href="category.html">Men</a></li>
-											<li><a href="category.html">Kids</a></li>
+											<li><a href="category.html">Mujer</a></li>
+											<li><a href="category.html">Hombre</a></li>
+											<li><a href="category.html">Niños</a></li>
 											<li><a href="category.html">Otra categoria</a></li>
-											<li><a href="#">Contact</a></li>
+											<li><a href="#">Contacto</a></li>
 										</ul>
 									</nav>
 							</div>
