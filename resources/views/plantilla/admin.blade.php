@@ -150,7 +150,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Bragado Shop</span>
     </a>
 
     <!-- Sidebar -->
@@ -161,7 +161,7 @@
           <img src="http://localhost:8000/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Juan Manuel Geny</a>
         </div>
       </div>
 
@@ -712,7 +712,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Inicio</a></li>
               <li class="breadcrumb-item active">@yield('title')</li>
             </ol>
           </div>

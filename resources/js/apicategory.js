@@ -54,7 +54,7 @@
 		},
 		mounted() {
 
-				if (document.getElementById('editar').innerHTML) {
+				if (document.getElementById('editar')) {
 					this.nombre = document.getElementById('nombretem').innerHTML;
 					this.deshabilitar_boton = 0;
 				} 

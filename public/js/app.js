@@ -49561,7 +49561,7 @@ var apicategory = new Vue({
     }
   },
   mounted: function mounted() {
-    if (document.getElementById('editar').innerHTML) {
+    if (document.getElementById('editar')) {
       this.nombre = document.getElementById('nombretem').innerHTML;
       this.deshabilitar_boton = 0;
     }
@@ -49602,11 +49602,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app'
-});
+if (document.getElementById('app')) {
+  var app = new Vue({
+    el: '#app'
+  });
+}
 
-__webpack_require__(/*! ./apicategory */ "./resources/js/apicategory.js");
+;
+
+if (document.getElementById('apicategory')) {
+  __webpack_require__(/*! ./apicategory */ "./resources/js/apicategory.js");
+}
+
+;
 
 /***/ }),
 
