@@ -55,7 +55,7 @@
 		mounted() {
 
 				if (document.getElementById('editar')) {
-					this.nombre = document.getElementById('nombretem').innerHTML;
+					this.nombre = document.getElementById('urlbase').innerHTML;
 					this.deshabilitar_boton = 0;
 				} 
 		} 

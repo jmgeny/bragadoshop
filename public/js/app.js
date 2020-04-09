@@ -49562,7 +49562,7 @@ var apicategory = new Vue({
   },
   mounted: function mounted() {
     if (document.getElementById('editar')) {
-      this.nombre = document.getElementById('nombretem').innerHTML;
+      this.nombre = document.getElementById('urlbase').innerHTML;
       this.deshabilitar_boton = 0;
     }
   }
@@ -49612,6 +49612,12 @@ if (document.getElementById('app')) {
 
 if (document.getElementById('apicategory')) {
   __webpack_require__(/*! ./apicategory */ "./resources/js/apicategory.js");
+}
+
+;
+
+if (document.getElementById('confirmareliminar')) {
+  __webpack_require__(/*! ./confirmareliminar */ "./resources/js/confirmareliminar.js");
 }
 
 ;
@@ -49728,6 +49734,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/confirmareliminar.js":
+/*!*******************************************!*\
+  !*** ./resources/js/confirmareliminar.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var confirmareliminar = new Vue({
+  el: '#confirmareliminar',
+  data: {
+    urlaeliminar: ''
+  },
+  methods: {
+    deseas_eliminar: function deseas_eliminar(id) {
+      this.urlaeliminar = document.getElementById('urlbase').innerHTML + '/' + id; // alert(this.urlaeliminar);
+
+      $('#modal_eliminar').modal('show');
+    }
+  }
+});
 
 /***/ }),
 

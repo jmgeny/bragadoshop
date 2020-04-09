@@ -2,23 +2,41 @@
 
 @section('title', 'Administración de Categorías')
 
+@section('breadcrumb')
+
+{{-- <li class="breadcrumb-item"><a href="{{ route('admin.category') }}">Categorias</a></li> --}}
+<li class="breadcrumb-item active">@yield('title')</li>
+
+@endsection
+
 @section('content')
   
         <!-- /.row -->
-        <div class="row">
+        <div id="confirmareliminar" class="row">
+
+          <span style="display:none;" id="urlbase" >{{ route('admin.category.index') }}</span>
+
+          @include('custom.modal_eliminar')
+
           <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Selección de Categorías</h3>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                  <form>
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <input type="text" name="name" class="form-control float-right" 
+                      placeholder="Buscar"
+                      value="{{ request()->get('name') }}">
+
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                      </div>
                     </div>
-                  </div>
+                  </form>
+
                 </div>
               </div>
               <!-- /.card-header -->
@@ -47,9 +65,13 @@
                       <td>{{ $categorie->description }}</td>
                       <td>{{ $categorie->created_at }}</td>
                       <td>{{ $categorie->updated_at }}</td>
-                      <td><a class="btn btn-default" href="{{ route('admin.category.show', $categorie->slug) }}"><i class="far fa-eye"></i></a></td>
-                      <td><a class="btn btn-default" href="{{ route('admin.category.edit', $categorie->slug) }}"><i class="far fa-edit"></i></a></td>
-                      <td><a class="btn btn-default" href="{{ route('admin.category.show', $categorie->slug) }}"><i class="far fa-trash-alt"></i></a></td>
+                      <td><a class="btn btn-success" href="{{ route('admin.category.show', $categorie->slug) }}">Ver</a></td>
+                      <td><a class="btn btn-warning" href="{{ route('admin.category.edit', $categorie->slug) }}">Editar</a></td>
+                      <td><a class="btn btn-danger" 
+                        {{-- data-toggle="modal" data-target="#modal_eliminar" --}}
+                        href="{{ route('admin.category.index') }}" 
+                        v-on:click.prevent="deseas_eliminar({{ $categorie->id }})"
+                        >Eliminar</a></td>
 
 
                     </tr>
@@ -57,7 +79,7 @@
 
                   </tbody>
                 </table>
-                {{ $categories->links() }}
+                {{ $categories->appends($_GET)->links() }}
               </div>
               <!-- /.card-body -->
             </div>

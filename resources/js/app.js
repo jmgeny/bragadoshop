@@ -39,6 +39,10 @@ if (document.getElementById('apicategory')) {
 	
 };
 
+if (document.getElementById('confirmareliminar')) {
+	require('./confirmareliminar');
+};
+
 
 
 
