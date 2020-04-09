@@ -161,15 +161,14 @@
           <img src="http://localhost:8000/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Juan Manuel Geny</a>
+          <a href="#" class="d-block">{{ Auth::user()->name}}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          <!-- Listado de categorias -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-list-alt"></i>
@@ -194,7 +193,32 @@
             </ul>
           </li>
 
+          <!-- Listado de Productos -->
           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-list-alt"></i>
+              <p>
+                Productos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.product.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listado de Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.product.create') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crear Productos</p>
+                </a>
+              </li>
+            </ul>
+          </li>          
+
+{{--           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -717,7 +741,7 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -770,6 +794,16 @@
         </div>
       @endif
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
       @yield('content') <!--Creacion de Categoria-->
 
     </section>
@@ -801,6 +835,6 @@
 <script src="http://localhost:8000/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="http://localhost:8000/adminlte/dist/js/demo.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app_admin.js') }}" defer></script>
 </body>
 </html>

@@ -48,8 +48,6 @@ class CategoryController extends Controller
         } else {
             return 'Slug Disponible';
         }
-        
-         
     }
 
     /**

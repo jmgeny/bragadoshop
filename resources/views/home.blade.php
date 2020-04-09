@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Bragado Shop
+                    
+                    <h3><a href="{{ route('admin.category.index') }}">Bragado Shop</a></h3>
+                    
                 </div>
             </div>
         </div>

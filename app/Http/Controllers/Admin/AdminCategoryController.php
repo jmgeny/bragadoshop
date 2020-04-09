@@ -8,6 +8,11 @@ use App\Category;
 
 class AdminCategoryController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,11 +45,13 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required|max:50|unique:categories,name',
+            'slug' => 'required|max:50|unique:categories,slug'
+        ]);
+
         $cat = Category::create($request->all());
-
-        $categories = Category::orderBy('name')->paginate(2);
-
+        // $categories = Category::orderBy('name')->paginate(2);
         // return view('admin.category.index', compact('categories'));
         return redirect()->route('admin.category.index')->with('datos','Se creó la categoría nueva');
     }
@@ -87,8 +94,12 @@ class AdminCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $cat = Category::findOrFail($id);
+        $request->validate([
+            'name' => 'required|max:50|unique:categories,name,'.$cat->id,
+            'slug' => 'required|max:50|unique:categories,slug,'.$cat->id,
+        ]);
 
-         $cat->fill($request->all())->save();
+        $cat->fill($request->all())->save();
 
         return redirect()->route('admin.category.index')->with('datos','Se modificó la categoría');
     }
