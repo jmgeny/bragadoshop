@@ -7,7 +7,13 @@
 			div_mensajeslug: 'Slug Existe',
 			div_clase_slug: 'badge badge-danger',
 			div_aparecer: false,
-			deshabilitar_boton: 1
+			deshabilitar_boton: 1,
+			// variables de precio
+				precio_actual: 0,
+				precio_anterior: 0,
+				porcentaje_descuento: 0,
+				descuento: 0,
+				descuento_mensaje: '0'			
 		},
 		computed: {
 			generarSlug : function(){
@@ -26,7 +32,48 @@
 				return this.slug; 
 
 				// return this.nombre.trim().replace(/ /g,'-').toLowerCase() 
-			}
+			},
+			generardescuento : function(){
+
+					if (this.porcentaje_descuento > 100) {
+						Swal.fire({
+							icon: 'error',
+							title: 'El porcentaje no puede superar 100!'
+						})
+						this.porcentaje_descuento = 100;
+						this.precio_actual = 0;
+						this.descuento_mensaje = 'El producto va sin cargo';
+					} 
+
+					if (this.porcentaje_descuento < 0) {
+						Swal.fire({
+							icon: 'error',
+							title: 'El porcentaje no puede ser menor a 0'
+						})				
+						this.porcentaje_descuento = 0;
+						this.precio_actual = this.precio_anterior;
+						this.descuento_mensaje = '';
+					}
+
+					if (this.porcentaje_descuento > 0) {
+						this.descuento = (this.porcentaje_descuento * this.precio_anterior) / 100;
+						this.precio_actual = this.precio_anterior - this.descuento;
+
+						if (this.porcentaje_descuento == 100) {
+							this.descuento_mensaje = 'El producto va sin cargo';
+						} else {
+							this.descuento_mensaje = 'El descuento es del '+ this.porcentaje_descuento + '%';
+						}
+
+
+					} else {
+						this.descuento = '';
+						this.precio_actual = this.precio_anterior;
+						this.descuento_mensaje = '';
+					}
+
+					return this.descuento_mensaje; 
+				}
 		},
 		methods: {
 			getProduct() {

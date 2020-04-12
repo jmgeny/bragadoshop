@@ -2,6 +2,28 @@
 
 use App\Category;
 use App\Product;
+use App\Image;
+
+
+Route::get('/prueba', function () {
+
+    //20 eliminar imagen
+
+	$producto = Product::find(3);
+	$producto->images[0]->delete();
+
+	return $producto->images;
+
+
+});
+
+Route::get('/resultado', function () {
+
+		$producto = Product::find(3);
+		return $producto->images;
+});
+
+
 
 /*
 |--------------------------------------------------------------------------
