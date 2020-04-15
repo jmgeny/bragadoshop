@@ -49502,7 +49502,7 @@ var apicategory = new Vue({
   el: '#apicategory',
   data: {
     nombre: '',
-    slug: ' ',
+    slug: '',
     div_mensajeslug: 'Slug Existe',
     div_clase_slug: 'badge badge-danger',
     div_aparecer: false,
@@ -49551,6 +49551,15 @@ var apicategory = new Vue({
           }
 
           _this.div_aparecer = true;
+
+          if (document.getElementById('editar')) {
+            if (document.getElementById('nombretem').innerHTML === _this.nombre) {
+              _this.deshabilitar_boton = 0;
+              _this.div_mensajeslug = '';
+              _this.div_clase_slug = '';
+              _this.div_aparecer = false;
+            }
+          }
         });
       } else {
         this.div_mensajeslug = "Debe ingresar un valor";
@@ -49562,7 +49571,7 @@ var apicategory = new Vue({
   },
   mounted: function mounted() {
     if (document.getElementById('editar')) {
-      this.nombre = document.getElementById('urlbase').innerHTML;
+      this.nombre = document.getElementById('nombretem').innerHTML;
       this.deshabilitar_boton = 0;
     }
   }
@@ -49657,6 +49666,30 @@ var apiproduct = new Vue({
     }
   },
   methods: {
+    eliminarImagen: function eliminarImagen(imagen) {
+      // console.log(imagen);
+      Swal.fire({
+        title: 'Esta seguro que desea eliminar el archivo ' + imagen.id + ' ?',
+        text: "No podra revertir los cambios",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+        if (result.value) {
+          var url = '/api/eliminarimagen/' + imagen.id;
+          axios["delete"](url).then(function (response) {
+            console.log(response.data);
+          });
+          var elemento = document.getElementById('idimagen-' + imagen.id); // console.log(elemento);
+
+          elemento.parentNode.removeChild(elemento);
+          Swal.fire('Eliminado!', 'Su archivo a sido eliminado.', 'success');
+        }
+      });
+    },
     getProduct: function getProduct() {
       var _this = this;
 
@@ -49674,6 +49707,15 @@ var apiproduct = new Vue({
           }
 
           _this.div_aparecer = true;
+
+          if (data.datos.name) {
+            if (data.datos.name === _this.nombre) {
+              _this.deshabilitar_boton = 0;
+              _this.div_mensajeslug = '';
+              _this.div_clase_slug = '';
+              _this.div_aparecer = false;
+            }
+          }
         });
       } else {
         this.div_mensajeslug = "Debe ingresar un valor";
@@ -49684,10 +49726,14 @@ var apiproduct = new Vue({
     }
   },
   mounted: function mounted() {
-    if (document.getElementById('editar')) {
-      this.nombre = document.getElementById('urlbase').innerHTML;
+    if (data.editar == 'Si') {
+      this.nombre = data.datos.name;
+      this.precio_anterior = data.datos.precio_anterior;
+      this.porcentaje_descuento = data.datos.porcentaje_descuento;
       this.deshabilitar_boton = 0;
     }
+
+    console.log('data');
   }
 });
 

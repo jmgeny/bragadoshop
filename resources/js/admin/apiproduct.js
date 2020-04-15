@@ -76,6 +76,38 @@
 				}
 		},
 		methods: {
+			eliminarImagen(imagen) {
+					// console.log(imagen);
+					Swal.fire({
+					  title: 'Esta seguro que desea eliminar el archivo '+ imagen.id +' ?',
+					  text: "No podra revertir los cambios",
+					  icon: 'warning',
+					  showCancelButton: true,
+					  confirmButtonColor: '#3085d6',
+					  cancelButtonColor: '#d33',
+					  confirmButtonText: 'Si, eliminar',
+					  cancelButtonText: 'Cancelar'
+					}).then((result) => {
+					  if (result.value) {
+					  	
+					  	let url ='/api/eliminarimagen/'+imagen.id;
+						axios.delete(url).then(response => {
+							console.log(response.data);
+						});
+
+					  	var elemento = document.getElementById('idimagen-'+imagen.id);
+					  	// console.log(elemento);
+					  	elemento.parentNode.removeChild(elemento);
+
+					    Swal.fire(
+					      'Eliminado!',
+					      'Su archivo a sido eliminado.',
+					      'success'
+					    )
+					  }
+					})					
+			},
+
 			getProduct() {
 				if (this.slug) {
 				let url ='/api/product/'+this.slug;
@@ -89,6 +121,15 @@
 						this.deshabilitar_boton = 1;
 					}
 					this.div_aparecer = true;
+
+					if (data.datos.name) {
+						if (data.datos.name === this.nombre) {
+							this.deshabilitar_boton = 0;
+							this.div_mensajeslug ='';
+							this.div_clase_slug ='';
+							this.div_aparecer = false;
+						}
+					}
 				})
 				} else {
 					this.div_mensajeslug = "Debe ingresar un valor";
@@ -101,10 +142,15 @@
 		},
 		mounted() {
 
-				if (document.getElementById('editar')) {
-					this.nombre = document.getElementById('urlbase').innerHTML;
+				if (data.editar == 'Si') 
+				{
+					this.nombre = data.datos.name;
+					this.precio_anterior = data.datos.precio_anterior;
+					this.porcentaje_descuento = data.datos.porcentaje_descuento;
 					this.deshabilitar_boton = 0;
-				} 
+				}
+
+				console.log('data');
 		} 
 
 	});

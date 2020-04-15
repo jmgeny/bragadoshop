@@ -9,10 +9,10 @@ Route::get('/prueba', function () {
 
     //20 eliminar imagen
 
-	$producto = Product::find(3);
-	$producto->images[0]->delete();
+	$producto = Product::with('images','category')->orderBy('id','desc')->get();
 
-	return $producto->images;
+
+	return $producto;
 
 
 });

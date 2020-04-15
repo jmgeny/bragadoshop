@@ -5,13 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost:8000/adminlte/plugins/fontawesome-free/css/all.min.css">
+  {{-- <link rel="stylesheet" href="http://localhost:8000/adminlte/plugins/fontawesome-free/css/all.min.css"> --}}
+  <script src="https://kit.fontawesome.com/93f901670c.js" crossorigin="anonymous"></script>
+
+
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
+
+  @yield('estilos')
+  {{-- select 2 --}}
   <link rel="stylesheet" href="http://localhost:8000/adminlte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -839,6 +845,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <script src="{{ asset('js/app_admin.js') }}" defer></script>
+
+@yield('script')
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 		el: '#apicategory',
 		data: {
 			nombre: '',
-			slug: ' ',
+			slug: '',
 			div_mensajeslug: 'Slug Existe',
 			div_clase_slug: 'badge badge-danger',
 			div_aparecer: false,
@@ -42,6 +42,15 @@
 						this.deshabilitar_boton = 1;
 					}
 					this.div_aparecer = true;
+
+					if (document.getElementById('editar')) {
+						if (document.getElementById('nombretem').innerHTML === this.nombre) {
+							this.deshabilitar_boton = 0;
+							this.div_mensajeslug ='';
+							this.div_clase_slug ='';
+							this.div_aparecer = false;
+						}
+					}
 				})
 				} else {
 					this.div_mensajeslug = "Debe ingresar un valor";
@@ -55,7 +64,7 @@
 		mounted() {
 
 				if (document.getElementById('editar')) {
-					this.nombre = document.getElementById('urlbase').innerHTML;
+					this.nombre = document.getElementById('nombretem').innerHTML;
 					this.deshabilitar_boton = 0;
 				} 
 		} 

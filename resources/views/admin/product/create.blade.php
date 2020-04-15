@@ -3,13 +3,36 @@
 @section('title', 'Crear de Productos')
 
 @section('breadcrumb')
+	<li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Productos</a></li>
+	<li class="breadcrumb-item active">@yield('title')</li>
+@endsection
 
-<li class="breadcrumb-item"><a href="{{ route('admin.product.index') }}">Productos</a></li>
-<li class="breadcrumb-item active">@yield('title')</li>
 
+@section('estilos')
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/adminlte/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+@endsection
+
+@section('script')
+	  <script src="/adminlte/plugins/select2/js/select2.full.min.js"></script>
+	  <script>
+	  	$(function () {
+	    //Initialize Select2 Elements
+	    $('#category_id').select2()
+
+	    //Initialize Select2 Elements
+	    $('.select2bs4').select2({
+	      theme: 'bootstrap4'
+	    });
+		});
+
+	  </script>
 @endsection
 
 @section('content')
+
+<script src="/adminlte/ckeditor/ckeditor.js"></script>
 
 <div id="apiproduct">
 	<form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data" >
@@ -87,7 +110,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label>Categoria</label>
-									<select name="category_id" class="form-control select2" style="width: 100%;">
+									<select name="category_id" id="category_id" class="form-control select2" style="width: 100%;">
 										@foreach($categorias as $categoria)
 
 										@if ($loop->first)
@@ -100,7 +123,7 @@
 
 									</select>
 									<label>Cantidad</label>
-									<input class="form-control" type="number" id="cantidad" name="cantidad" >
+									<input class="form-control" type="number" id="cantidad" name="cantidad" value="0" >
 								</div>
 								<!-- /.form-group -->
 							</div>
@@ -202,7 +225,7 @@
 								<div class="form-group">
 									<label>Descripción corta:</label>
 
-									<textarea class="form-control" name="descripcion_corta" id="descripcion_corta" rows="3"></textarea>
+									<textarea class="form-control ckeditor" name="descripcion_corta" id="descripcion_corta" rows="3"></textarea>
 
 								</div>
 								<!-- /.form group -->
@@ -210,7 +233,7 @@
 								<div class="form-group">
 									<label>Descripción larga:</label>
 
-									<textarea class="form-control" name="descripcion_larga" id="descripcion_larga" rows="5"></textarea>
+									<textarea class="form-control ckeditor" name="descripcion_larga" id="descripcion_larga" rows="5"></textarea>
 
 								</div>                
 
@@ -232,7 +255,7 @@
 								<div class="form-group">
 									<label>Especificaciones:</label>
 
-									<textarea class="form-control" name="especificaciones" id="especificaciones" rows="3"></textarea>
+									<textarea class="form-control ckeditor" name="especificaciones" id="especificaciones" rows="3"></textarea>
 
 								</div>
 								<!-- /.form group -->
@@ -240,7 +263,7 @@
 								<div class="form-group">
 									<label>Datos de interes:</label>
 
-									<textarea class="form-control" name="datos_de_interes" id="datos_de_interes" rows="5"></textarea>
+									<textarea class="form-control ckeditor" name="datos_de_interes" id="datos_de_interes" rows="5"></textarea>
 								</div>                
 							</div>
 							<!-- /.card-body -->
@@ -291,16 +314,12 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-
-									{{-- <label>Estado</label>
-									<input  class="form-control" type="text" id="estado" name="estado" value="Nuevo"> --}}
-						
-						<select name="estado" id="estado" class="custom-select">
-							<option value="Nuevo">Nuevo</option>
-							<option value="Oferta">Oferta</option>
-							<option value="Temporada">Temporada</option>							
-						</select>
-
+									<label>Estado</label>
+										<select name="estado" id="estado" class="form-control select2" style="width: 100%;">
+												@foreach ($estados_productos as $estado)
+													<option value="{{ $estado }}">{{ $estado }}</option>
+												@endforeach
+										</select>
 								</div>
 								<!-- /.form-group -->
 							</div>

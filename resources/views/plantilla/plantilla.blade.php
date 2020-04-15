@@ -10,7 +10,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<link rel="stylesheet" type="text/css" href="{{ asset('asset/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('asset/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}"> --}}
+	<script src="https://kit.fontawesome.com/93f901670c.js" crossorigin="anonymous"></script>
 
 	    <!-- Styles -->
 	@yield('estilos')    
