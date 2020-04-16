@@ -41,17 +41,41 @@
     </ul>
 
     <!-- SEARCH FORM -->
+ <div id="api_search_autocomplete">   
+
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" 
+        aria-label="Search"
+        name="name" 
+        v-model="palabra_a_buscar"
+        v-on:keyup="autoComplete" {{-- llama a autoComplete al presionar una tecla --}}
+        v-on:keyup.enter="Submitform" {{-- ejecuta accion    --}}
+        >
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
+          <button id="miboton" 
+                ref="SubmitButtonSearch"
+                class="btn btn-navbar" type="submit">
             <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
     </form>
 
+    <div class="panel-footer" v-if="resultados.length" 
+         style="position: absolute; z-index: 3">
+      <ul class="list-group">
+
+        <li class="list-group-item" v-for="resultado in resultados">
+          <a href="#" class="dropdown-item" 
+             v-on:click.prevent="select(resultado)">
+             <span v-html="resultado.name_negrita"></span>  
+          </a>
+        </li>
+      </ul>
+    </div>
+
+</div>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->

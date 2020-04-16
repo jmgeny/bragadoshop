@@ -22,7 +22,7 @@ class AdminProductController extends Controller
     {
         $nombre = $request->get('name');
 
-        $productos = Product::with('images','category')->where('name','like',"%$nombre%")->orderBy('name')->paginate(2);
+        $productos = Product::with('images','category')->where('name','like',"%$nombre%")->orderBy('name')->paginate(5);
 
         return view('admin.product.index', compact('productos'));        
     }
