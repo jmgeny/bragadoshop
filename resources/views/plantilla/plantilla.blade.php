@@ -18,6 +18,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/shop.ico">
+
 </head>
 <body>
 
@@ -39,6 +41,9 @@
 				<li><a href="#">Mujer</a></li>
 				<li><a href="#">Hombre</a></li>
 				<li><a href="#">Niños</a></li>
+				<li><a href="{{ route('admin') }}">Admin</a></li>
+				<li><a href="{{ route('admin.category.index') }}">Categorias</a></li>
+				<li><a href="{{ route('admin.product.index') }}">Producto</a></li>
 
 			</ul>
 		</div>
@@ -79,7 +84,7 @@
 					<ul class="d-flex flex-row align-items-start justify-content-start">
 						<li class="active"><a href="#">Mujer</a></li>
 						<li><a href="#">Hombre</a></li>
-						<li><a href="#">Niños</a></li>					
+						<li><a href="#">Niños</a></li>				
 					</ul>
 				</nav>
 				<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
@@ -96,7 +101,7 @@
 					<!-- Phone -->
 					<div class="header_phone d-flex flex-row align-items-center justify-content-start">
 						<div><div><img src="{{ asset('asset/images/phone.svg') }}" alt="https://www.flaticon.com/authors/freepik"></div></div>
-						<div>+1 912-252-7350</div>
+						<div>+54 9 11 6321-5787</div>
 					</div>
 				</div>
 			</div>
