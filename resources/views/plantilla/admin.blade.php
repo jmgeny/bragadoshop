@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Administrador de online de Bragado al mundo">
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -21,6 +22,8 @@
   <link rel="stylesheet" href="http://localhost:8000/adminlte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="shortcut icon" type="image/x-icon" href="imagenes/shop.ico">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -175,7 +178,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="http://localhost:8000/adminlte/index3.html" class="brand-link">
+    <a href="{{ route('tienda') }}" class="brand-link">
       <img src="http://localhost:8000/adminlte/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -191,7 +194,9 @@
           <img src="http://localhost:8000/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name}}</a>
+          <a href="#" class="d-block">
+            {{ Auth::user()->name}}
+          </a>
         </div>
       </div>
 
