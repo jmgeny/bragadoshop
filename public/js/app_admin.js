@@ -15535,20 +15535,14 @@ var apiproduct = new Vue({
     },
     generardescuento: function generardescuento() {
       if (this.porcentaje_descuento > 100) {
-        Swal.fire({
-          icon: 'error',
-          title: 'El porcentaje no puede superar 100!'
-        });
+        swal("Atento", "El porcentaje no puede superar 100!", "error");
         this.porcentaje_descuento = 100;
         this.precio_actual = 0;
         this.descuento_mensaje = 'El producto va sin cargo';
       }
 
       if (this.porcentaje_descuento < 0) {
-        Swal.fire({
-          icon: 'error',
-          title: 'El porcentaje no puede ser menor a 0'
-        });
+        swal("Atento", "El porcentaje no puede ser inferior a 0!", "error");
         this.porcentaje_descuento = 0;
         this.precio_actual = this.precio_anterior;
         this.descuento_mensaje = '';

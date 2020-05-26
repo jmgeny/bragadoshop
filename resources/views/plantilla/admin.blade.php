@@ -871,7 +871,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="http://localhost:8000/adminlte/dist/js/demo.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="{{ asset('js/app_admin.js') }}" defer></script>
 
