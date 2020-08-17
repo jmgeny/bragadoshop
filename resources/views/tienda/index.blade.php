@@ -10,14 +10,11 @@
 @section('content')
 		<div class="super_container_inner">
 			<div class="super_overlay"></div>
-
 			<!-- Home -->
-
 			<div class="home">
 				<!-- Home Slider -->
 				<div class="home_slider_container">
 					<div class="owl-carousel owl-theme home_slider">
-
 						<!-- Slide -->
 						<div class="owl-item">
 							<div class="background_image" style="background-image:url({{ asset('asset/images/home_2.jpg') }})"></div>
@@ -30,7 +27,7 @@
 												<div class="home_subtitle">Summer Wear</div>
 												<div class="home_items">
 													<div class="row">
-														<div class="col-sm-3 offset-lg-1">														
+														<div class="col-sm-3 offset-lg-1">
 														</div>
 														<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
 															<div class="product home_item_large">

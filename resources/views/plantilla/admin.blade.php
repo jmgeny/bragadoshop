@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
   <!-- Font Awesome -->
-  {{-- <link rel="stylesheet" href="http://localhost:8000/adminlte/plugins/fontawesome-free/css/all.min.css"> --}}
   <script src="https://kit.fontawesome.com/93f901670c.js" crossorigin="anonymous"></script>
 
 
@@ -18,6 +17,7 @@
   <!-- overlayScrollbars -->
 
   @yield('estilos')
+
   {{-- select 2 --}}
   <link rel="stylesheet" href="http://localhost:8000/adminlte/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -36,10 +36,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="http://localhost:8000/adminlte/index3.html" class="nav-link">Inicio</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="{{ route('tienda') }}" class="nav-link">Tienda</a>
       </li>
     </ul>
 
@@ -194,7 +191,7 @@
           <img src="http://localhost:8000/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">
+          <a href="{{ route('admin') }}" class="d-block">
             {{ Auth::user()->name}}
           </a>
         </div>
