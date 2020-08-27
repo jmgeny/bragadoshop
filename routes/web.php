@@ -43,6 +43,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+<<<<<<< HEAD
 
 Route::middleware('auth')->group(function(){
 	
@@ -53,6 +54,8 @@ Route::middleware('auth')->group(function(){
 	})->name('admin');
 	
 });
+=======
+>>>>>>> master
 
 Route::middleware('auth')->group(function(){
 	
@@ -65,8 +68,12 @@ Route::middleware('auth')->group(function(){
 	
 });
 
+<<<<<<< HEAD
 Route::resource('/admin/category','Admin\AdminCategoryController')->names('admin.category');
 Route::resource('/admin/product','Admin\AdminProductController')->names('admin.product');
+=======
+
+>>>>>>> master
 Route::get('cancelar/{ruta}', function($ruta){
 
 	return redirect()->route( $ruta )->with('cancelar','Se canceló la Acción');

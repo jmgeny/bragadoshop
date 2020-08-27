@@ -191,7 +191,11 @@
           <img src="http://localhost:8000/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+<<<<<<< HEAD
           <a href="{{ route('admin') }}" class="d-block">
+=======
+          <a href="#" class="d-block">
+>>>>>>> master
             {{ Auth::user()->name}}
           </a>
         </div>
